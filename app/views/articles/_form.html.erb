@@ -1,0 +1,60 @@
+<main class="justify-center container mx-auto mt-28 px-5 flex">
+  <%= form_for @article do |f| %>
+    <div class="max-w-2xl rounded-lg shadow-xl bg-gray-100", style="padding: 30px">
+      <div class="w-full max-w-xs">        
+        <div class="-space-y-px rounded-md shadow-sm">
+          <h1 class="font-bold text-4xl" style="text-align: center;">
+            <%= @article.new_record? ? 'New' : 'Edit' %> Article 
+          </h1>
+          <br>
+          
+          <div class="mb-4">
+            <%= f.label :title,class:"block text-gray-700 text-sm font-bold mb-2"%>
+            <%= f.text_field :title, class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+            <% @article.errors.full_messages_for(:title).each do |message| %>
+              <div><%= message %></div>
+            <% end %>
+          </div><br>
+
+          <div class="mb-6">
+            <%= f.label :body,class:"block text-gray-700 text-sm font-bold mb-2"%>
+            <%= f.text_area :body, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+            <% @article.errors.full_messages_for(:body).each do |message| %>
+              <div><%= message %></div>
+            <% end %>
+          </div>
+          <br>
+          <div class="flex justify-center mt-8">
+            <div class="max-w-full rounded-lg shadow-lg bg-gray-50">
+              <div class="m-4">
+                <label class="inline-block mb-2 text-gray-500">File Upload</label>
+                <div class="flex items-center justify-center w-full">
+                  <label class="flex flex-col w-full h-32 border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
+                    <div class="flex flex-col items-center justify-center pt-7">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-400 group-hover:text-gray-600"
+                        fill="none" viewBox="0 0 23 23" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                      </svg>
+                      <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
+                        Attach a file</p>
+                    </div>
+                    <%= f.file_field :image  %> 
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="flex">
+            <%= f.submit "Save",class:"flex-1 bg-indigo-600 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm  font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 
+              focus:ring-indigo-500" %>
+
+            <%= link_to "Cancel", articles_path, class: "flex-1 ml-3 bg-red py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm 
+              font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-center", style:"background-color: #E73F33; color: white;" %>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</main>

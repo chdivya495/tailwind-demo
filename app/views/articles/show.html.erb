@@ -1,0 +1,13 @@
+<div class="flex justify-center mt-28">
+  <div class="rounded-lg shadow-lg bg-white max-w-sm">
+    <a href="#!">
+      <%=image_tag @article.image.url %>  
+    </a>
+    <div class="p-6">
+      <h5 class="text-gray-900 text-xl font-medium mb-2"><%=@article.title%></h5>
+      <p class="text-gray-700 text-base mb-4">
+        <%= @article.body %>
+      </p>
+    </div>
+  </div>
+</div>
