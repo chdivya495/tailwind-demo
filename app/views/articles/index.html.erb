@@ -31,7 +31,7 @@
                   </div>
                 </td>
                 <td class="px-6 py-4">
-                  <div class="text-sm text-gray-500"><%=article.body%></div>
+                  <div class="text-sm text-gray-500"><%= truncate article.body, length: 70 %></div>
                 </td>
 
                 <td class="px-6 py-4">
@@ -43,10 +43,9 @@
                 </td>
 
                 <td class="px-6 py-4">
-                  <%= link_to "", article_path(article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  }, class: 'fa-solid fa-trash-can' %>
+                    <%= button_to "", article_path(article), method: :delete,
+                    form: {data: {turbo_confirm: 'Are you sure?'}},
+                    class:"fa-solid fa-trash-can fa flip"  %>
                 </td>
               </tr>
             </tbody>
